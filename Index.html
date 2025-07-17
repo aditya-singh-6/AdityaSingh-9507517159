@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startup Landing Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f0f11;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .containers {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .nav-links a {
+            margin: 0 12px;
+            font-weight: 500;
+            color: #aaa;
+        }
+        
+        .auth-buttons button {
+            margin-left: 12px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .auth-buttons .signin {
+            background: none;
+            color: #ccc;
+        }
+        
+        .auth-buttons .signup {
+            background-color: #6366f1;
+            color: #fff;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero .btn-group button {
+            margin: 5px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background-color: #6366f1;
+            color: #fff;
+        }
+        
+        .btn-secondary {
+            background-color: #2f2f2f;
+            color: #fff;
+        }
+        
+        .hero img {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 700px;
+            border-radius: 10px;
+            height: auto;
+        }
+        
+        .customer-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .customer-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .customer-section p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .features {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .features h2 {
+            margin-bottom: 20px;
+        }
+        
+        .features p {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-item img {
+            width: 40px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item h3 {
+            margin-bottom: 10px;
+        }
+        
+        .testimonials {
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+        
+        .testimonial-card {
+            background: #1c1c1f;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: left;
+        }
+        
+        .cta-section {
+            background-color: #4f46e5;
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .cta-section input[type='email'] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+        
+        .cta-section button {
+            padding: 10px 20px;
+            border: none;
+            background: #0f0f11;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        footer {
+            background: #0f0f11;
+            color: #aaa;
+            padding: 40px 20px;
+            display: grid;
+            gap: 20px;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            footer {
+                grid-template-columns: repeat(4, 1fr);
+                text-align: left;
+            }
+            .product-item {
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        /*   left side corner  */
+        
+        .hero .bottom-left-shape {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            /* Adjusted for responsive */
+            width: 460px;
+            opacity: 0.5;
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .bg-lines {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 25vw;
+            max-width: 500px;
+            z-index: -1;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .features-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 10px;
+        }
+        
+        .icon-circle {
+            width: 56px;
+            height: 56px;
+            background-color: #6366f1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .icon-circle i {
+            color: #fff;
+            font-size: 20px;
+        }
+        
+        .feature-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .feature-desc {
+            color: #9ca3af;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 600px) {
+            .features-section {
+                gap: 30px;
+            }
+        }
+        /* Duplicate as needed */
+        
+        .badge {
+            display: inline-block;
+            background-color: #27c76f;
+            color: #0f0f11;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .section {
+            max-width: 1000px;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .section h1 {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+        
+        .section p {
+            font-size: 1rem;
+            color: #c2c2c2;
+            margin: 0.5rem 0 2rem;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            align-items: start;
+            padding: 20px;
+        }
+        
+        .card {
+            padding: 1.5rem;
+        }
+        
+        .card img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            /* Center image */
+        }
+        
+        .card-title {
+            color: #7f7eff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card p {
+            color: #c2c2c2;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+            text-align: left;
+        }
+        
+        .checklist li {
+            color: #c2c2c2;
+            margin: 0.4rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .checklist li::before {
+            content: '\2713';
+            position: absolute;
+            left: 0;
+            color: #27c76f;
+            font-weight: bold;
+        }
+        
+        .testimonial {
+            margin-top: 4rem;
+            text-align: center;
+        }
+        
+        .testimonial h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+        
+        .testimonial p {
+            font-size: 1rem;
+            color: #c2c2c2;
+            max-width: 600px;
+            margin: 1rem auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .heading {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .subheading {
+            font-size: 1em;
+            color: #94a3b8;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .testimonials {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background-color: #1e293b;
+            border-radius: 10px;
+            padding: 30px;
+            max-width: 330px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            position: relative;
+            flex-basis: 100%;
+        }
+        
+        .quote-mark {
+            font-size: 24px;
+            color: #60a5fa;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .testimonial-text {
+            margin: 40px 0 30px 0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .author-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-info img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            margin: 0;
+        }
+        
+        .author-link {
+            font-size: 0.9em;
+            color: #3b82f6;
+            text-decoration: none;
+        }
+        
+        .author-link:hover {
+            text-decoration: underline;
+        }
+        
+        .newsletter {
+            background-color: #5c5cff;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 10px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 20px;
+        }
+        
+        .newsletter form {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .newsletter input[type="email"] {
+            padding: 10px;
+            width: 100%;
+            max-width: 250px;
+            border: none;
+            border-radius: 4px;
+        }
+        
+        .newsletter button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #0f0f11;
+            /* Changed to match theme */
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .footer {
+            background-color: #0f0f11;
+            color: #aaa;
+            padding: 40px 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        
+        .footer-column h4 {
+            margin-bottom: 15px;
+            font-size: 16px;
+            color: #fff;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        .footer-logo p {
+            font-size: 14px;
+        }
+        
+        .footer-bottom {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            color: #888;
+            font-size: 14px;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: #888;
+            margin: 0 10px;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        
+        .social-icons a:hover {
+            color: #fff;
+        }
+        /* --- Media Queries  Responsiveness --- */
+        /* Tablet (768px to 1024px) */
+        
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .features-section {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 30px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .card img {
+                max-width: 300px;
+            }
+            .testimonial-card {
+                flex-basis: calc(50% - 10px);
+            }
+            .newsletter input[type="email"] {
+                width: calc(100% - 100px);
+            }
+            .footer {
+                grid-template-columns: repeat(2, 1fr);
+                /* columns on tablets */
+                text-align: left;
+            }
+            .footer-logo {
+                align-items: flex-start;
+                text-align: left;
+            }
+            .social-icons {
+                margin-top: 0;
+            }
+        }
+        /* Mobile (up to 767px) */
+        
+        @media (max-width: 767px) {
+            header {
+                flex-direction: column;
+                padding: 20px 0;
+            }
+            .logo {
+                margin-bottom: 15px;
+            }
+            .auth-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
+            .auth-buttons button {
+                margin-left: 0;
+                width: 100%;
+            }
+            .hero {
+                padding: 40px 15px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 0.9rem;
+            }
+            .hero .btn-group {
+                flex-direction: column;
+                display: flex;
+            }
+            .hero .btn-group button {
+                width: 29%;
+                margin: 3px 180px
+            }
+            .hero .bottom-left-shape {
+                width: 100%;
+                left: 0;
+                bottom: -20px;
+                /* Adjust */
+            }
+            .bg-lines {
+                width: 80vw;
+            }
+            .customer-section {
+                padding: 40px 15px;
+            }
+            .customer-section h2 {
+                font-size: 1.5rem;
+            }
+            .customer-section p {
+                font-size: 0.9rem;
+            }
+            .features-section {
+                grid-template-columns: 1fr;
+                padding: 40px 15px;
+                gap: 25px;
+            }
+            .section {
+                padding: 20px 15px;
+            }
+            .section h1 {
+                font-size: 1.75rem;
+            }
+            .section p {
+                font-size: 0.9rem;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            .card {
+                padding: 1rem;
+            }
+            .testimonial-card {
+                flex-basis: 100%;
+                padding: 20px;
+            }
+            .container {
+                padding: 40px 15px;
+            }
+            .heading {
+                font-size: 1.8em;
+            }
+            .subheading {
+                font-size: 0.9em;
+                margin-bottom: 30px;
+            }
+            .newsletter {
+                padding: 30px 15px;
+            }
+            .newsletter input[type="email"] {
+                border-radius: 4px;
+            }
+            .newsletter button {
+                border-radius: 4px;
+            }
+            .footer {
+                grid-template-columns: 1fr;
+                /* Single colum mob */
+                padding: 30px 15px;
+                text-align: center;
+            }
+            .footer-logo {
+                margin-bottom: 20px;
+                align-items: center;
+                /* Center logo mob */
+            }
+            .footer-column {
+                margin-bottom: 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                padding: 15px 15px;
+                gap: 10px;
+            }
+            .social-icons {
+                margin-top: 10px;
+            }
+        }
+        /* scroll button create */
+        
+        body {
+            font-family: sans-serif;
+            min-height: 2000px;
+            padding: 20px;
+        }
+        
+        #topBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="containers">
+
+        <header>
+            <img src="Shape (13).png" alt="Background Lines" class="bg-lines">
+            <div class="logo"><img src="Logo (2).png" alt=""></div>
+
+
+            <div class="auth-buttons">
+                <button class="signin">Sign in</button>
+                <button class="signup">Sign up</button>
+            </div>
+        </header>
+
+        <section class="hero">
+            <img src="Combined Shape.png" alt="Decorative Shape" class="bottom-left-shape">
+
+            <h1>Landing template for startups</h1>
+            <p>Our landing page template works on all devices, so you only have to set it up once, and get beautiful results forever.</p>
+            <div class="btn-group">
+                <button class="btn-primary">Start free trial</button>
+                <button class="btn-secondary">Learn more</button>
+            </div>
+            <img src="Video.png" alt="Team working">
+
+
+
+        </section>
+        <section class="customer-section">
+            <h2>The majority our customers do not <br> understand their workflows.</h2>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt <br> mollit anim id est laborum.
+            </p>
+        </section>
+
+        <section class="features-section">
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-star"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-file-alt"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-globe"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-lightbulb"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-thumbs-up"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+            <div class="feature-box">
+                <div class="icon-circle"><i class="fas fa-comments"></i></div>
+                <div class="feature-title">Instant Features</div>
+                <p class="feature-desc">
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat.
+                </p>
+            </div>
+
+        </section>
+
+
+        <div class="section">
+            <div class="badge">Reach goals that matter</div>
+            <h1>One product, unlimited solutions</h1>
+            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laborum — semper quis lectus nulla.</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">More speed Less spend</div>
+                <h2>Keep projects on schedule</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <ul class="checklist">
+                    <li>Duis aute irure dolor in reprehenderit</li>
+                    <li>Excepteur sint occaecat</li>
+                    <li>Amet consectetur adipiscing elit</li>
+                </ul>
+            </div>
+            <div class="card">
+                <img src="Illustration.png" alt="Task List UI">
+            </div>
+            <div class="card">
+                <img src="Illustration (1).png" alt="Workflow Chart">
+            </div>
+            <div class="card">
+                <div class="card-title">More speed Less spend</div>
+                <h2>Keep projects on schedule</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <ul class="checklist">
+                    <li>Duis aute irure dolor in reprehenderit</li>
+                    <li>Excepteur sint occaecat</li>
+                    <li>Amet consectetur adipiscing elit</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-title">More speed Less spend</div>
+                <h2>Keep projects on schedule</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <ul class="checklist">
+                    <li>Duis aute irure dolor in reprehenderit</li>
+                    <li>Excepteur sint occaecat</li>
+                    <li>Amet consectetur adipiscing elit</li>
+                </ul>
+            </div>
+            <div class="card">
+                <img src="Illustration (2).png" alt="Integration Map">
+            </div>
+        </div>
+
+
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="heading">Don't take our word for it</h2>
+                <p class="subheading">
+                    Vitae aliquet nec ullamcorper sit amet risus nullam eget felis semper quis lectus nulla at volutpat diam ut venenatis tellus—in ornare.
+                </p>
+                <div class="testimonials">
+                    <div class="testimonial-card">
+                        <div class="quote-mark">❝❞</div>
+                        <p class="testimonial-text">
+                            — Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I’ve had Open PRO for about 24 hours now and I honestly don’t know how I functioned without it before.
+                        </p>
+                        <div class="author-info">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Anastasia Dan">
+                            <div>
+                                <p class="author-name">Anastasia Dan</p>
+                                <a href="#" class="author-link">UX Board</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-mark">❝❞</div>
+                        <p class="testimonial-text">
+                            — Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I’ve had Open PRO for about 24 hours now and I honestly don’t know how I functioned without it before.
+                        </p>
+                        <div class="author-info">
+                            <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Roman Level">
+                            <div>
+                                <p class="author-name">Roman Level</p>
+                                <a href="#" class="author-link">AppName</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <div class="quote-mark">❝❞</div>
+                        <p class="testimonial-text">
+                            — Open PRO lets me quickly get the insights I care about so that I can focus on my productive work. I’ve had Open PRO for about 24 hours now and I honestly don’t know how I functioned without it before.
+                        </p>
+                        <div class="author-info">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Alexa Sackett">
+                            <div>
+                                <p class="author-name">Alexa Sackett</p>
+                                <a href="#" class="author-link">Reform Layouts</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <div class="newsletter">
+            <h2>Stay in the loop</h2>
+            <p>Join our newsletter to get top news before anyone else.</p>
+            <form>
+                <input type="email" placeholder="Your best email...">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-column">
+                <div class="footer-logo">
+
+                    <img src="Logo (2).png" alt="">
+                    <p>Lorem Ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups.</p>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h4>Products</h4>
+                <ul>
+                    <li>Web Studio</li>
+                    <li>DynamicFlex Flex</li>
+                    <li>Programming Forms</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul>
+                    <li>Neotud exercitation</li>
+                    <li>Visual mockups</li>
+                    <li>Neotud exercitation</li>
+                    <li>Visual mockups</li>
+                    <li>Neotud exercitation</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li>Consectetur adipiscing</li>
+                    <li>Labore et dolore</li>
+                    <li>Consectetur adipiscing</li>
+                    <li>Labore et dolore</li>
+                    <li>Consectetur adipiscing</li>
+                </ul>
+            </div>
+        </footer>
+
+        <div class="footer-bottom">
+            <div>Made by <strong>Cruip</strong>, All right reserved</div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+        <!-- Scroll to Top Button -->
+        <button id="topBtn">↑</button>
+
+    </div>
+    <script>
+        // 1. Sign In/Sign Up Click Alert
+        document.querySelector('.signin').addEventListener('click', () => {
+            alert('Sign In clicked!');
+        });
+
+        document.querySelector('.signup').addEventListener('click', () => {
+            alert('Sign Up clicked!');
+        });
+
+        // 2. Scroll to news  "Start Free Trial"
+        document.querySelector('.btn-primary').addEventListener('click', () => {
+            document.querySelector('.newsletter').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // 3. News form validation
+        document.querySelector('.newsletter form').addEventListener('submit', function(e) {
+            e.preventDefault(); // form submission
+            const emailInput = this.querySelector('input[type="email"]');
+            const email = emailInput.value.trim();
+            if (email === '') {
+                alert('Please enter your email address.');
+            } else if (!email.includes('@') || !email.includes('.')) {
+                alert('Please enter a valid email address.');
+            } else {
+                alert('Thanks for subscribing!');
+                emailInput.value = ''; // Clear input
+            }
+        });
+        // sroll button js
+        const topBtn = document.getElementById('topBtn');
+
+        window.addEventListener('scroll', () => {
+            topBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+
+        topBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+
+</html>
